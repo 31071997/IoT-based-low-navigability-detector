@@ -1,0 +1,599 @@
+\documentclass[12pt, top = 1 inch, bottom = 1 inch, left = 1.2 inch, top = .8 inch]{book}
+%\usepackage[english]{bable}
+\usepackage{makeidx}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\linespread{1.5}
+\parskip = 6pt
+\title{
+	\begin{figure}
+		\centering
+		\includegraphics[scale= 0.5]{logo.png}
+	\end{figure}
+	{\Large{IoT Based Low Navigability Detector}\\}	
+	\centering{\author{Zannatul Ferdous\\
+			ID: 15701018\\
+			Supervised by\\
+			
+			Professor Dr. Mohammad Sanaullah Chowdhury\\
+			Submitted to:\\
+			Department of Computer Science and Engineering\\
+			University of Chittagong\\} }
+	\date{\today}}
+	
+\begin{document}
+	\maketitle
+	\pagenumbering{arabic}
+ 	\setcounter{page}{1}
+	\section*{Approval}
+	I respectfully declare that this project “IoT Based Low Navigability Detector” is submitted by Zannatul Ferdous, ID: 15701018, to Computer Science \& Engineering Department, University of Chittagong in his own effort and completing all requirements which is supervised by Prof. Dr. Sanaullah Chowdhury. This project has been accepted for the fulfillment of desired requirements for the degree of B.Sc. Engineering in Computer Science \& Engineering.\\\\\\\\\\\\\\\\\\\\
+	\.....................\\
+	Signature of Supervisor\\
+	Professor Dr. Mohammad Sanaullah Chowdhury\\
+	Department of Computer Science and Engineering\\
+	University of Chittagong, Chattogram\\
+	\newpage
+	\section*{Declaration}
+	I, Zannatul Ferdous declare that this project “IoT based Low Navigability Detector” is presented by my own effort. I confirm that:
+	\begin{enumerate}
+		\item The work was done perfectly while in candidature for a research degree at this University. Where any part of this thesis/project has previously submitted for degree at this University or other institute which is clearly stated.
+		\item I have acknowledged all main sources of help.\\\\\\\\\\\\\\\\
+	\end{enumerate}
+	\....................\\
+	Zannatul Ferdous\\
+	Department of Computer Science and Engineering\\
+	University of Chittagong\\
+	\newpage
+	\section*{Dedication}
+
+	{\centering{\LARGE{Dedicated to My Parents}}
+		}
+	\newpage
+	\section*{Acknowledgement}
+	Alhamdulillah, all praise to Almighty Allah for being with me and give the patience, knowledge exploration capability, and opportunity for fulfilling the requirement to accomplish the project to human being benefit. I am greatly thankful Allah to make me skilled in usefulness of mankind.
+	I am willingly take this opportunity to express my hearted gratitude to Professor Dr. Mohammad Sanaullah Chowdhury, Department of Computer Science \& Engineering, CU, my supervisor, who has the greatest contribution and inspiration through his guidance and co-operation. It wasn’t possible to make such a system without him and his continuous support, encouragement.
+	I would like to give special thanks to the authority of Computer Science \& Engineering, University of Chittagong for giving me the respective data for my assist in project/thesis. Also, I am greatly thankful to my family, friends for their support and encouragement. May Allah bless us.
+	\newpage
+	\tableofcontents
+	\listoffigures
+	\newpage
+	\section*{Abstruct}
+	The landscape of Bangladesh has a huge collection of inland waterways. Sedimentation of a river is a very natural process that lessens of navigability of a river. For our geographical position rivers of our country have high sedimentation rate. Besides dumping waste and plastics in to water not only causes water pollution, but also responsible for lessen navigability.\\ 
+	Now a days, many of our rivers are dried up and may have lost their navigability. This reason has broken down our oldest 				transportation system.  Road transportation has taken the place for transporting goods and products through the country. But weak and narrow roads can’ t bear the load of heavy transports and break down very easily. The huge number of trucks carrying goods are also responsible for traffic jams and causes trouble for the passengers traveling in public transports. Where a huge opportunity of transportation is just unused dew to right maintenance. The lessen navigability is also alarming for defunct creatures of our rivers. This is causes damage to biodiversity 	and imbalance in water ecosystem and food chain by almost vanishing so many rare species.\\
+	The purpose of designed system is using technology in a well planed way for the betterment of our transportation system, lifestyle and environment. As the main cause of lessen navigability is not dredging at time, I have designed system that can be attached with a water vehicle to measure if the navigability of a water body is right for large water vehicles or not. If it found any water body with less navigability it will star an indicator and send the location of water body to a preset number of responsible authority via mobile messaging system to ensure dredging in proper time. I have tried to come with a cheap solution so that it won’t be a burden to our economy and can be used easily in practical fields. I have used Arduino Uno, GSM module, sonar sensor, buzzer, LED, GPS module and bluetooth module. Sonar and GPS technology will identify the location that requires dredging, GSM will transfer the information. Buzzer and LED are cheap optional additions for easily recognizing the place, whenever the device will find a low navigable area, it will indicate that to the present users with its light and sound. Bluetooth will be used for transfering the data to a computer and store them in a excel sheet.
+	\chapter{Introduction}
+	\section{Introduction}
+	Once very popular and feasible water transportation system of Bangladesh has almost vanished. It can be revived easily if the navigability of our inland waterways taken care by providing regular dredging facilities. This can be the solution to our unwanted traffic jams and make the adventurous water rides available to us. In this Chapter we will introduce the knowledge of IoT, motivation, problem statement, and objectives of the project.
+	\section{Problem Definition}
+	Lossing navigability is a continious natural process for any river. Though the sedmentation rate of the rivers varies from one to another but lossing navigability gradually is a very natural occurance. But if the waterbodies lose their ideal navigability it will be a threat for water transportation system as well as the creatures. Besides, it will create problems like floodes, irrigation problems etc. This problems can be handled by maintaining the ideal navigability of a river. So I have developed a system that will notify low navigabilityof a water body, so the necessery steps to achive it's ideal navigability can be taken.  
+	\section{Motivation}
+	Bangladesh has a huge network of inland waterways. These waterways should go through a dredging process regularly, otherwise they’ll lose their navigability dew to natural sedimentation and human created pollution. Besides destroying our inbuilt god gifted network of transportation low navigability can also destroy the biodiversity by vanishing the living environment of many water creatures. In rainy seasons floods come as a curse to us. Low navigable waterways can easily lead to floods by causing overflow in rainy seasons. Low navigable dried up rivers also cause hazard in irrigation system, that leads to a fall in our agriculture and economy.   
+This huge loss can be reversed to huge opportunities by ensuring the dredging facilities to our rivers at a regular basis, for which measuring there navigability regularly is needed. Traditional system is not suitable for this monitoring system as it’s a huge task for monitoring these measurements punctually using manual approach. Some of them are:-
+	\begin{enumerate}
+	\item Measuring navigability on a regular basis.
+	\item Measuring regularly using manpower can be so difficult in following cases:
+		\begin{description}
+			\item [Case 1:] It needs a good amount of trained and experienced manpower to do the measuring tasks.	
+			\item [Case 2:] It includes some arrangements.
+			\item [Case 3:] Recruitment and training of people and regular manual task will demand more money.
+			\item [Case 4:] Manual process will be time consuming. It always lacks efficiency.
+			\item [Case 5:] Locating the exact geographical location is not possible by human.
+			\item [Case 6:] No manual system can give nonstop service.
+		\end{description}
+	\item Sending the information efficiently to the responsible authority.
+	\end{enumerate}
+ An IoT based device can provide more information in less effort and less man power. The IoT based navigability monitoring system will not just revive our oldest system of transportation in a technology enriched manner but also serve the universal purpose of reserving the biodiversity and save rare species from total defunction.
+	\section{Overview of Solution Approach and Ideas}
+	The project can be done using IoT based approach. An Arduino Uno board will be used to collect data, control all the data flow and system mechanism. Sonar sensor and GPS (Global Positioning System) will collect the data and GSM (Global System for Mobile Communication), buzzer and LED will perform the actions after processing the data. Information will be served to the authority using the GSM. A bluetooth module can be easily added to the system for continiously uploading all readings of the system for further calculation. This will improve the decision of starting dredging in any particular area. The solution is elaborately described below:-
+	\subsection{Develop a system that can detect low navigability}
+	Objective of this system is detecting low navigability of the waterways so that the information can be passed to the responsible authority. This task would be done by using sonar sensor.
+	\subsection{Develop a system that can track location}
+	Objective of the system is detecting the latitude and longitude of a low navigability area. This task would be done by using GPS module.
+	\subsection{Develop a system that can transfer information}
+	Objective of this system is transferring the information and location of low navigability area via SMS to the responsible authority. This task would be done by using GSM modue.
+	\subsection{Develop a system that can provide sign}
+	Objective of this system is to develop a system that can provide visual and audio indication like buzzing alarm and blinking LED. This task would be done by using buzzer and LED light.
+	\subsection{Develop a system that can store data}
+	This is an additional mechanism of the system, it will be usefull during thorough servey of a river/ waterbody. This mechanism includes a bluetooth module and  a laptop. The bluetooth module will transfer all retrived data to the laptopfor and save them i a excel sheet for further analysis.
+	\section{Key Contributions of the projects}
+	The key contributions of this thesis are given below:
+	\begin{enumerate}
+		\item Detecting low navigability.
+		\item Detecting location.
+		\item Collecting information required for dredging.
+		\item Sending location to authority.
+		\item Providing audio visual sign. 
+		\item Storing readings for future analysis.
+	\end{enumerate}
+	\chapter{Background and Purpose of Significance}
+	\section{Introduction}
+	This chapter contains the previously published researches, papers, publications and purpose and significance of my work in context of the related works.
+	\section{Related works}
+	\begin{enumerate}
+		\item Arduino based home automation system using sonar sensor proposed by Naralasetti Veeranjaneyulu1 , Gavini Srivalli and Jyostna Devi Bodapati. \cite{wadhwani2018smart}
+		\item B. Kodavati, V. Raju, S. S. Rao, A. Prabu, T. A. Rao, and D. Y.suggested IOT based Vehicle Tracking \& Vehicular Emergency System using GPS and GSM modules. \cite{kodavati2011gsm}  
+		\item Upward looking sonar-based measurements of sea ice and waves by Fissel, David B and Marko, John R and Ross, E and Kwan, T and Egan, John. \cite{fissel2008upward}
+		\item Ultrasonic underwater depth measurement by Borujeni, Shahram Etemadi \cite{borujeni2002ultrasonic}
+		\item Bathymetry observations of inland water bodies using a tethered single-beam sonar controlled by an unmanned aerial vehicle by Bandini, Daniel, Jakob, Kittel, Sheng and Monica. \cite{bandini2018bathymetry}
+		\item Bluetooth 5: A concrete step forward toward the IoT by Mario Collotta, Giovanni Pau, Timothy Talty and Ozan K. Tonguz. \cite{collotta2018bluetooth}
+		\item Bluetooth Protocol in Internet of Things (IoT), Security Challenges and a Comparison with Wi-Fi Protocol: A Review by Sofi and Mukhtar Ahmad. \cite{sofibluetooth}
+		\item An overview of the Bluetooth wireless technology by Bisdikian and Chatschik. \cite{bisdikian2001overview}
+	\end{enumerate}
+	\section{Significance of Work}
+		IoT stands for “ Internet of Things”. We know that there are many system having interaction with human and computer. But IoT is totally different which refers to a system of interrelated computing devices and mechanical digital machines, objects, animals or people that are provided with unique identifiers and the ability to transfer data over a network without requiring human to human or human-to-computer interaction. 
+		At this era of technology the use of IoT is increasing year-over-year, approximately 31\% and number of connected devices installed based on IoT are 23.14 billions in 2018. The global market value of IoT is projected to reach \$7.1 trillion by 2020. IoT involves extending internet connectivity beyond standard devices, such as desktops, laptops, smartphones, and tablets, to any range of traditionally dumb or non-internet enabled physical devices and everyday objects. Embedded with technology, these devices can communicate and interact over the internet, and they can be remotely monitored and controlled. IoT is the way to build up smart devices for a smarter life.\\
+		The ultrasonic sonar sensor is largely used to measure depth both in under water and over water.GPS based technology are largely used for tracking systems, location determining systems. GSM was mainly designed to be used in 2g and 3g mobile networks, now many IoT devices use this for communication with the end user via SMS and phone calls. This project is an experiment of combining this technologies and use them for solution of low navigability problem of our inland waterways.   
+		The purpose of the project is detecting low navigable states of inland waterways. The ideal for routing goods ship is 3.048 m. So for deciding a waterway is well navigable or not we need to measure if the depth of water body is greater then 3.048m or not.In this project I have declared the alarming depth 4m as after notifying the authority will need some time to arrange the dredging program.\\
+		The system uses a sonar based mechanism to detect navigability less then alarming depth. When such a depth is detected it turns on an indicator designed with combination of a buzzer and a LED. The system notes the location of low navigable areas location and transfer the information using GPS and GSM module.\\
+	\chapter{Description of the System}
+		\section{Introduction}
+		This is a navigability measurement system that has the ability to monitor the navigability of the waterways, generate warning while finding a low navigability area, detect its location details and inform authority to take necessary dredging operations in the detected location. In this section we will show the block diagram, and methodology of the system. 
+		\section{System Model}
+		As we can see in the flow chart, the system searches for depth lower than 4m. After finding such a depth it turns on audio visual indicator that will help users to memorize the location and easily finding them. It stores a the latitude and longitude of starting location and keep measuring the depth in search of depth higher than 4m. As it finds the higher depth it notes the latitude and longitude again and forward the information of location with the value of average navigability of that place. Optionally it has a system to transfer all readings to a computer using bluetooth. This can be helpful for thorough examination of a river.The block diagram represents the systems working principal of the system which can define the overall process. 
+			\begin{figure}
+				\centering
+				\includegraphics{block diagram.png}
+				\caption{Block Diagram of the system}
+			\end{figure}
+    		
+		\section{Assumptions and Rationale}
+			\subsection{Methodology}
+			
+			This system is designed using sonar sensor for measuring the depth of a waterbody. It’s the implementation of study on velocity of sound in physics, using the formula, d = vt / 2.
+			Here,\\
+			d = depth of waterbody\\
+			v= velocity of sound\\
+			t= total time of sending the sound signal and getting the echo back.\\
+			
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{echosounder2.svg_}
+				\caption{Working process of the sonar}
+				\label{fig:echosounder2}
+			\end{figure}
+			The location is detected using by connecting GPS module with satellites. And at last the information uses GSM for transferring. Bluetooth module works as an extension for transferring all data to a computer here.  
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{User-segment.png}
+				\caption{Working process of GPS}
+				\label{fig:echosounder2}
+			\end{figure} 
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (2).jpg}
+				\caption{Transfering data using bluetooth module}
+			\end{figure}
+			\section{Assumptions} 
+			The main task of the system is to transfer the location of a low navigability area to the responsible authority. So it wil perform all the alarming and notifying operations for depth below 4m.
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{graph.PNG}
+				\caption{Working process related plot}
+			\end{figure} 
+			An environment has different characteristics and different risky situation of which it was not warned. There are assumptions in all system. There is some assumption in my system also that are given below:
+			\begin{enumerate}
+				\item Environment is not in dangerous climate.
+				\item Environment is flexible.
+				\item Power supply is always ensured.
+			\end{enumerate}
+			\chapter{Implementation of Proposed System}
+			\section{Introduction}
+			We need some hardware and software requirements which are required to develop the system. In this section, we will cover the hardware and software requirements for the system.
+			\section{System Requirements}
+			\newpage
+			\subsection{Hardware Requirements}
+			Here, we will discuss about the hardware requirements of the system. The hardware components that are needed to build the system are given below:
+			\begin{enumerate}
+				\item Arduino Uno
+				\item GSM Module
+				\item GPS Module
+				\item Bluetooth Module
+				\item Sonar Sensor 
+				\item Buzzer
+				\item LED Light
+				\item Jumper Wires
+				\item Power Supply
+				\item USB Cable
+				\item Bread Board
+				\item Buck Converter
+				\item SIM Card
+				\item Resistance
+			\end{enumerate}	
+			\subsubsection{Arduino Uno}
+			It is a microcontroller board based on ATmega328P microcontroller [8] which operated with 8 bit. But it has some extra features that bring it efficient than others are: crystal oscillator, serial communication, voltage regulator which can control Arduino better. There are 14 digital pins(input / output pins), 6 analog input pins, an ICSP header, USB connection, a power barrel jack, and a reset button. It is programmable by Arduino IDE (Integrated Development Environment) via USB Type B. It is powered by USB or 9V external battery. All pins operate at 5V and can effort 40mA, and internal pull up resistor of 20-50k The 14 digital pins can be used as the input or output pins via pinMode(), digitalWrite(), digitalRead(). This board can be monitored and controlled using serial monitor of Arduino IDE.
+			\begin{figure}	
+				\centering
+				\includegraphics[width=0.7\linewidth]{Introduction-to-Arduino-UNO.png}
+				\caption{Arduino Uno}
+			\end{figure}
+			\paragraph{Special functions of pins}
+			\begin{enumerate}
+				\item There are Rx and Tx pins 0 and 1 are used to receive and transmit TTL serial data.
+				\item Pins 2 and 3 are external interrupt pins trigger an interrupt on low value or change in value.
+				\item Pins 3,5,6, 9 and 11(PWM) provide 8 bit output via using analogWrite(). 
+				\item Pins 10, 11, 12, 13 for SPI communication. 
+				\item Pin AREF is used to give the reference voltage in analog inputs using analogReference().
+				\item Pin Reset is used to make it low which means it resets the microcontroller. 
+				\item Power of Arduino Uno pins are Vin, 3.3V, 5V, GND.
+				\item Pins (A0 to A5) are analog pins used to give analog input.
+				\item Pins (0 to 13) are used as input or output pins. 
+				\item Pin 13 is used as inbuilt LED turn on. 
+				\item Pin A4 and A5 are used as TWI communication. 		
+			\end{enumerate}
+			\subsubsection{GSM Module}
+			GSM is a system for Global Mobile Communication which is used in cellular network in 2G or 2.5G based on TDMA multiplexing technique. It’s developed by European telecommunication standard. It is used in infrastructure system networks. There are many types of GSM. In this system we will use GSM module SIM900A for this system for connecting with the cellular network.  There is a SIM slot where a SIM card can be inserted.This module need to be powered from a constant 5v power source. 
+			\begin{figure}	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (4).jpg}
+				\caption{GSM Module}
+			\end{figure}
+			\subsubsection{GPS Module}
+			This module is used for collecting location information from the satellites. It can provide time, date, latitude, longitude, altitude etc. location oriented information of a place. It can communicate with Arduino using serial pins. I am using NEO 7M GPS module for this project, this can be powered from the Arduino or also can be feed external power through an USB port. This module operates in 3.3 v and has a built in regulator to operate in 5v connections.  
+			\begin{figure}	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (6).jpg}
+				\caption{GPS Module}
+			\end{figure}
+			\subsubsection{Bluetooth Module}
+			This module can transfer data from a device to another using wireless bluetooth technology. This communicates with arduino using serial pins and takes power directly from arduino. This module can operate from 3.3v - 6v power supply. 
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (7).jpg}
+				\caption{Bluetooth Module}
+			\end{figure}
+			\newpage
+			\subsubsection{Sonar Sensor}
+			This sensor is used for measuring distance / depth. This sensor has 4 pins, they are 5v, Trigger, Echo and GND. For this system we are using JSN-SR04-T2.0. it’s a waterproof sonar sensor. As it’s designed for measuring the depth of a waterbody, so we require a waterproof equipment to de the task. It has long prob attached with a long cable so it can touch the water surface to measure its depth. 
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (8).jpg}
+				\includegraphics[width=0.7\linewidth]{images.png}
+				\caption{Waterproof Sonar Sensor and its circuit diagram}
+			\end{figure}
+			\newpage
+			\subsubsection{Buzzer}
+			Buzzer is an equipment that can render sound signal. It’s designed for generating alarm in any particular situation. In our system we are using piezo buzzer for indicating low navigability. This buzzer has 2 pins, one for connecting with Arduino GND and another is used as output pin. 
+			\begin{figure}[p]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (9).jpg}
+				\includegraphics[width=0.7\linewidth]{download.png}
+				\caption{Buzzer and its circuit diagram}
+			\end{figure}
+			\newpage
+			\subsubsection{LED Lights}
+			LED (Light Emitting Diode) emits the light when there is a flow of a current. The different color represents the different voltage recognition. This semiconductor light source emits the energy as like photon when the electron of the semiconductor recombined with the electron holes. This type of effect is called electroluminescence. There are two pins in LED where the longest pin is Vcc and the smaller pin is GND. The different color LED is the reason for different voltage. For example, white LED runs on 3.2V. In this system we will use an red LED to indicate the low navigability area and a green LED to indicate established power supply.
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (10).jpg}
+				\caption{LED Lights}
+			\end{figure}
+			\newpage
+			\subsubsection{Jumper Wires}
+			Jumper wires are the wires that are used connect the electrical circuit of any system. These wires are basically used in breadboard. There are three types of jumper wires:-
+			\begin{enumerate}
+				\item male to male
+				\item male to female
+				\item female to female
+			\end{enumerate}
+			These wires are tiny but strong to keep connected in circuit. I have used male to male and male to female wires for my project. 
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (11).jpg}
+				\caption{Jumper Wires}
+			\end{figure}
+			\subsubsection{Power Supply}
+			A power source is need to be ensured to power Arduino and GSM module. A GSM ,module and Arduino can be powered directly from a power supply using power adapter or connecting cell with 5v and ground pin or to the power jack. In my system I’ll use two 9v batteries for portable power supply.
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (12).jpg}
+				\caption{Power Supply}
+			\end{figure}
+			\newpage
+			\subsubsection{USB Cable}
+			USB cable is used to upload code verified in Arduino IDE to Arduino board. It can also ensure 5v power supply to the Arduino Uno and establishes communication with serial monitor and serial plotter. This can be used to supply power to tiny Arduino projects that can consume power less than 5v. However, in this project, we are going to use USB cable just for code uploading purpose.
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{ae230546-92d2-42a2-8d12-3cb20d2d0f72.jpg}
+				\caption{USB Cable}
+			\end{figure}
+			\newpage
+			\subsubsection{Bread Board}
+			Bread board is a base for building the prototype of a circuit. It is commonly used in electrical circuit to give the connection between devices to maintain a system efficiently. There are two plus and two minus horizontal lines in breadboard where each port on that portion are plus or minus.  
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (14).jpg}
+				\caption{Bread Board}
+			\end{figure}
+			\newpage
+			\subsubsection{Buck Converter}
+			Buck converter is used to step up or step down of the power supply of a power source. it can convert 15/12/9v DC power to 5v DC power.  
+			\begin{figure}	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (15).jpg}
+				\caption{Buck Converter}
+			\end{figure}
+			\newpage
+			\subsubsection{Sim Card}
+			Buck converter is used to step up or step down of the power supply of a power source. it can convert 15/12/9v DC power supply to 5v DC power supply.  
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{sim+card.jpeg}
+				\caption{Sim Card}
+			\end{figure}
+			\subsubsection{Resistor}
+			10k resistors are attached with the positive end of LED lights for lessen power supply. As LED works at 3.2v, 5v power supply can burn them.   
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{download (16).jpg}
+				\caption{Resistance}
+			\end{figure}
+			\newpage
+			\subsection{Software Requirements}
+			We need Arduino Software to continue the process based on C programming language. The software specifications are:
+			\begin{enumerate}
+				\item Arduino IDE
+				\item Tera Term
+				\item Operating System
+			\end{enumerate}
+			\subsubsection{Arduino IDE}
+			There is a software IDE named ARDUINO 1.8.5 this is open source software for writing the code. We can upload the code to Arduino microcontroller to run the circuit efficiently. This software runs in Windows, Mac OS, Linux, we are working in Windows. It is a java based application software. In this system we used C language to define the system. It is also free platform and we can easily use this software in flexible way. It grants C and C++ programming language to define the system evaluation. For this project we are using C language.
+			\subsubsection{Tera Term}
+			Tera Term is a terminal software that can be used instead of Arduino serial monitor to  view serial data from Arduino. This software can establish serial communication with bluetooth module and save the serial data as excel file.
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{Tera.PNG}
+				\caption{Tera Term interface}
+			\end{figure}
+			\newpage
+			\subsubsection{Operting System}
+			If we thought about the platform of operating system where we can run the desired software are windows (all platform), Linux, Mac OS. This operating system can operate the software. We are using Windows operating system for this project.
+			\section{Supporting Diagram}
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{Circuit.PNG}
+				\caption{Circuit Connection of Arduino}
+			\end{figure}
+			The figure above shows the circuit design for the proposed system.
+			A flow chart is developed for the C code of the system. It's given below:
+			\begin{figure}[h!]	
+				\centering
+				\includegraphics[width=0.7\linewidth]{Flow chart.PNG}
+				\caption{Flow Chart of the Designed System}
+			\end{figure}
+			\section{Mathematical Analysis}
+			The mathematical formulas used for this system are:\\
+			d = (v*t)/2\\
+			\[Elaboration,\\
+			Distance = (Velocity of ultrasonic sound in water *  Total time between generating sound and receiving echo)/2\\\] \\
+			And,\\
+			Average navigability = Summation of navigability readings / Number of readings\\
+			\section{Formulated Algorithm}
+			Formulated Algorithm from the designed flow chart is:
+			\begin{description}
+				\item[Step 1: ] Start
+				\item[Step 2: ] Transfer location and navigability readings using bluetooth.
+				\item[Step 3: ] Generate excel file and store data.
+				\item[Step 4: ]	If, Navigability < 4m
+					\begin{description}
+						\item[Yes ]
+						\begin{enumerate}
+							\item Start indicator.
+							\item Note location.
+							\item Start storing navigability and continue recursion.
+							\item Calculate average navigability.
+							\item Continue measuring depth.
+							\item If, Navigability > 4m
+							\begin{description}
+								\item[Yes ]
+								\begin{description}
+									\item Stop indicator.
+									\item Note location.
+									\item Calculate average navigability.
+									\item Send low navigability starting and ending location and average navigability.
+									\item Return to step 1.
+								\end{description}
+							\end{description} 
+						\end{enumerate}
+						\item[No ] Return to step 1.
+					\end{description}
+				\item[Step 5: ] Else, Continue measuring depth.
+			\end{description}
+		\chapter{Result}
+		\section{Introduction}
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{IMG20200211234902.jpg}
+			\caption{Developed System}
+		\end{figure}
+		This is the developed system of the proposal. This chapter is for discussing its readings.\\
+		In this chapter we will discuss the results, compare them, check there validation to reach the conclusion.
+		\section{Graphs and Tables}
+		The graphs and tables generated from the experiment is given below.
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{Excel.PNG}
+			\caption{Excel File Generated From The Readings}
+		\end{figure}
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{Excel2.PNG}
+			\caption{Various Plots Generated in Excel}
+		\end{figure}
+		\newpage
+		A terminal software Tera Term is used to generate this excel files. An screen shot of Tera Term is given below:
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{Tera1.PNG}
+			\caption{Readings in Tera Term}
+		\end{figure}
+		\newpage
+		\section{Parameter Values}
+		The parameters for the mathematical calculation in this system are time and length(depth). We have used the unit of time as microseconds and unit of length (depth/ navigability) as meter. \\
+		So,\\
+		The velocity of ultrasonic sound in water = (1500/10\^\ 6)meter /micro second. = .0015 m/ms.\\
+		
+		\section{Validation}
+		For checking the validation of the system I have tested the performance of the system in a real environment. I have used the system for taking readings of river Shitalokkha and some screen shots of the readings of the serial monitor is given below.
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{Untitled2.png}
+			\includegraphics[width=0.7\linewidth]{Untitled.png}
+			\caption{Navigability Readings of River Shitalokkha}
+		\end{figure} 
+		So the developed system works well in the real environment. Though, there are some conditions of its working properly.
+		\begin{enumerate}
+			\item A strong and steady structure will help the system working easily.
+			\item Enough power supply need to be ensured for smooth working of the system.
+		\end{enumerate}
+		\section{Comparison}
+		Powerful sonars have been used for various researches im marine science, marine biology and oceanography. They are also used largely in many ocean related applications. The have a large accuracy range. So, the can be used easily to scan under water land surface or ocean depth. \\
+		The sonar sensor I have used is an inexpensive one that can measure distance accurately accurately from 25cm to 450cm. So, this can't trace the exact depth or scan the underwater land surface. But, it can work well enough to detect low navigability. So its ideal to build an inexpensive cheap system that can be produced in large amount and used in daily basis for particularly detecting low navigability.
+		\section{Result Discussion}
+		The system detects area location less then 4m and forward the information to responsible authority. In most cases the system works well, except some false readings from the sonar.This can be easily handled by adding some conditions in the program and ignoring unusual peaks in a plot.
+		\begin{figure}[h!]	
+			\centering
+			\includegraphics[width=0.7\linewidth]{Untitledpiot.png}
+			\caption{Unusual Peaks}
+		\end{figure} 
+		\section{significance}
+		On the basis of above discussion, I claim that my developed system has fulfilled the purposes of the project and the obtained results have claimed the contributions. 
+		\chapter{Conclusion and Future Work}
+		\section {Conclusion}
+		The system I have developed is an inexpensive solution of monitoring the navigability state of our inland waterways. It's enable to provide notifications to the responsible authority to arrange dredging to regain lost navigability.\\
+		It's designed using portable power system to make it a fully portable device that allows it to work in minimum facilities. GSM network is used so it won't require any internet connection to work and easily operate in underdeveloped rural areas.
+		\section{Future Works}
+		\begin{enumerate}
+			\item Developing an web based system for continuous data transfer.
+			\item Sending mail notification. 
+			\item Data storing in SD card. 
+		\end{enumerate}   
+	\chapter{Refrences}	 
+	\bibliographystyle{ieeetr}
+	\bibliography{refrences}
+	\chapter{Appendix}
+	\#include <SoftwareSerial.h>\\
+	\#include <TinyGPS++.h>\\
+	SoftwareSerial GPS\_Serial(2,3);\\
+	SoftwareSerial GSM\_Serial(4,5);\\
+	TinyGPSPlus gps;\\
+	const int trig = 6;\\
+	const int echo = 7;\\
+	int buzzer = 8;\\
+	int LED = 9;\\
+	int duration;\\
+	double distance;\\
+	double avgDistance=0;\\
+	String Distance = "";\\
+	String info;\\
+	String Location;\\
+	String Location1="";\\
+	String Location2="";\\
+	int count=1;\\
+	void setup() \{\\
+		// put your setup code here, to run once:\\
+		pinMode(trig, OUTPUT);\\
+		pinMode(buzzer, OUTPUT);\\
+		pinMode(LED, OUTPUT);\\
+		pinMode(echo, INPUT);\\
+		Serial.begin(9600);\\
+		GPS\_Serial.begin(9600);\\
+		GSM\_Serial.begin(9600);\\
+		Serial.println("Date, Time, Latitude, Longitude, Depth(m)");\\
+	\}\\
+	
+	void loop() \{\\
+		// put your main code here, to run repeatedly:\\
+		digitalWrite(buzzer, LOW);\\
+		digitalWrite(LED, LOW);\\
+		delay(100);\\
+		GPSinfo();\\
+		measure();\\
+		while(distance < 4)\\
+		\{ \\
+			avgDistance = (avgDistance+distance)/count;\\
+			GPSinfo();\\
+			if(Location1=="")\\
+			
+			\{\\
+				Location1+=Location;\\
+			\}\\
+			alarm();\\
+			measure();\\
+			count++;\\
+		\}\\
+		if(Location2=="")\\
+		\{\\
+			Location2+=Location;\\
+		\}\\
+		if(Location1!="" \&\& Location2!="")\\
+		\{\\
+			SMS(message(Location1, Location2, String(avgDistance)));\\
+		\}\\
+	\}\\
+	void alarm()\\
+	\{\\
+		digitalWrite(buzzer, HIGH);\\
+		digitalWrite(LED, HIGH);\\
+		delay(1000);\\
+		digitalWrite(buzzer, LOW);\\
+		digitalWrite(LED, LOW);\\
+	\}\\
+	double measure()\\
+	\{\\
+		digitalWrite(trig, LOW);\\
+		delay(2);\\
+		digitalWrite(trig, HIGH);\\
+		delay(10);\\
+		digitalWrite(trig, LOW);\\
+		duration = pulseIn(echo, HIGH);\\
+		distance = duration*0.0015/2;\\
+		Serial.println(distance);\\
+		return distance;\\
+	\}\\
+	void GPSinfo()\\
+	\{\\
+		if(GPS\_Serial.available())\\
+		\{\\
+			gps.encode(GPS\_Serial.read());\\ 
+		\}\\
+		
+		Serial.print(gps.date.day());\\
+		Serial.print("/");\\
+		Serial.print(gps.date.month());\\
+		Serial.print("/");\\
+		Serial.print(gps.date.year());\\
+		Serial.print(", ");\\
+		
+		Serial.print(gps.time.hour());\\
+		Serial.print(":");\\
+		Serial.print(gps.time.minute());\\
+		Serial.print(":");\\
+		Serial.print(gps.time.second());\\
+		Serial.print(", ");\\
+		
+		Serial.print(gps.location.lat(), 6);\\
+		Serial.print(", ");\\
+		
+		Serial.print(gps.location.lng(), 6);\\
+		Serial.print(", ");\\
+		String Location \= String(gps.location.lat(), 6)+ String(gps.location.lng(), 6);\\
+	\}\\
+	void SMS(String s)\\
+	\{\\
+		GSM\_Serial.println("AT+CMGF=1");\\
+		delay(1000);\\
+		GSM\_Serial.println("AT+CMG=$backslash$"+8801957760475$backslash$"$backslash$r");\\
+		delay(1000);\\
+		GSM\_Serial.println(s);\\
+		delay(1000);\\
+		GSM\_Serial.println((char)26);\\
+		delay(1000);\\
+	\}\\
+	String message(String a, String b, String c)\\
+	\{\\
+		String s = "Low navigability found from latitude, longitude "+a+" to latitude, longitude"+b+", average depth "+c+" .";\\
+		return s;\\
+	\}		\\
+\end{document}
+
+                        
